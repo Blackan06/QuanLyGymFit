@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "627945256376",
+    "firebase_url": "https://flutter-gymfit-default-rtdb.firebaseio.com",
+    "project_id": "flutter-gymfit",
+    "storage_bucket": "flutter-gymfit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627945256376:android:92280d2e5f0c22e3100b4d",
+        "android_client_info": {
+          "package_name": "com.example.gym_fit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627945256376-53sbjtsrs9l828uaa1jpiaeasnfe2rtc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gym_fit",
+            "certificate_hash": "874613f637559f7ec46a0273e962f9ab48da6f9c"
+          }
+        },
+        {
+          "client_id": "627945256376-cqou55gju4cu66juq42i2i0gk62lpog2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKWrT1f1UQuVovsPuqX4Wc1Gix34YNssM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627945256376-cqou55gju4cu66juq42i2i0gk62lpog2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "627945256376-1s5567ejgu93nbr2ben0n1ajcug7b873.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "net.codex.gymfit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
