@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:gym_fit/screens/cannang.dart';
 import 'package:numberpicker/numberpicker.dart';
 
@@ -69,7 +70,6 @@ class _MyWidgetState extends State<AgeScreen> {
                       selectedTextStyle: TextStyle(
                         decoration: TextDecoration.combine([
                           TextDecoration.underline,
-                          TextDecoration.overline
                         ]),
                         fontSize: 40,
                         fontFamily: 'OpenSans',
@@ -81,57 +81,82 @@ class _MyWidgetState extends State<AgeScreen> {
                 ],
               ),
             ),
+            // Center(
+            //   child: ElevatedButton(
+            //     child: const Text('Age'),
+            //     onPressed: () => showMaterialNumberPicker(
+            //       context: context,
+            //       title: 'Pick Your Age',
+            //       maxNumber: 100,
+            //       minNumber: 14,
+            //       selectedNumber: _currentValue,
+            //       onChanged: (value) => setState(() => _currentValue = value),
+            //     ),
+            //   ),
+            // ),
             SizedBox(
-              height: 50,
+              height: 80,
             ),
             SizedBox(
               width: 350,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.white,
+                        side: BorderSide(
+                          color: Colors.yellowAccent,
+                          width: 2.0,
+                        ),
                       ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      'Quay lại',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Quay lại',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(CanNangSrceen.routeName);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(CanNangSrceen.routeName);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.yellow,
                       ),
-                      backgroundColor: Colors.yellow,
-                    ),
-                    child: Text(
-                      'Tiep Theo',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Tiep Theo',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),

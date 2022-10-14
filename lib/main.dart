@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gym_fit/screens/age.dart';
 import 'package:gym_fit/screens/cannang.dart';
+import 'package:gym_fit/screens/chieucao.dart';
 import './screens/muctieu.dart';
 import './screens/login.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         MucDoHoatDongSrceen.routeName: (ctx) => MucDoHoatDongSrceen(),
         AgeScreen.routeName: (ctx) => AgeScreen(),
         CanNangSrceen.routeName: (ctx) => CanNangSrceen(),
+        ChieuCaoSrceen.routeName: (ctx) => ChieuCaoSrceen(),
       },
     );
   }

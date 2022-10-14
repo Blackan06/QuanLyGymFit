@@ -17,9 +17,13 @@ class _MyWidgetState extends State<MuctieuScreen> {
     CheckTitleMuctieu(title: 'Xây dựng cơ bắp'),
     CheckTitleMuctieu(title: 'Cải thiện độ bền')
   ];
+  bool _isChecked = false;
   void onAllClicked(CheckTitleMuctieu chkMT) {
     setState(() {
       chkMT.value = !chkMT.value;
+      _isChecked = !_isChecked;
+      print(chkMT.toString());
+      print(_isChecked.toString());
     });
   }
 
@@ -61,19 +65,21 @@ class _MyWidgetState extends State<MuctieuScreen> {
             ),
             SizedBox(
               height: 450.0,
+              width: 350.0,
               child: ListView(
                 children: <Widget>[
                   ...checkBoxList
                       .map(
                         (item) => Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(color: Colors.yellow, width: 3.0),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
                           margin: EdgeInsets.only(bottom: 20),
-                          color: Colors.yellow,
-                          child: ListTile(
-                            onTap: () => onAllClicked(item),
-                            leading: Checkbox(
-                              value: item.value,
-                              onChanged: (value) => onAllClicked(item),
-                            ),
+                          color: Colors.white,
+                          child: CheckboxListTile(
+                            activeColor: Colors.black,
+                            checkColor: Colors.yellow,
                             title: Text(
                               item.title,
                               style: TextStyle(
@@ -82,6 +88,15 @@ class _MyWidgetState extends State<MuctieuScreen> {
                                 color: Colors.black,
                               ),
                             ),
+                            checkboxShape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0),
+                            ),
+                            side: BorderSide(
+                              color: Colors.yellowAccent,
+                              width: 2.0,
+                            ),
+                            value: item.value,
+                            onChanged: (value) => onAllClicked(item),
                           ),
                         ),
                       )
@@ -94,50 +109,61 @@ class _MyWidgetState extends State<MuctieuScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.white,
+                        side: BorderSide(
+                          color: Colors.yellowAccent,
+                          width: 2.0,
+                        ),
                       ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      'Quay lại',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Quay lại',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushNamed(MucDoHoatDongSrceen.routeName);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(MucDoHoatDongSrceen.routeName);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.yellow,
                       ),
-                      backgroundColor: Colors.yellow,
-                    ),
-                    child: Text(
-                      'Tiep Theo',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Tiep Theo',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),

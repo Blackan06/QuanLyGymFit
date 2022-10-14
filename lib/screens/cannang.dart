@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_fit/screens/chieucao.dart';
 import 'package:weight_slider/weight_slider.dart';
 
 class CanNangSrceen extends StatefulWidget {
@@ -10,7 +11,7 @@ class CanNangSrceen extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<CanNangSrceen> {
-  double _sliderValue = 150.0;
+  double _sliderValue = 70.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +48,15 @@ class _MyWidgetState extends State<CanNangSrceen> {
                 style: TextStyle(fontSize: 16),
               ),
             ),
+            SizedBox(
+              height: 50.0,
+            ),
             Center(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.baseline,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                textBaseline: TextBaseline.alphabetic,
-                children: [
+                children: <Widget>[
                   Text(
-                    _sliderValue.round().toString(),
+                    'Weight',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -63,51 +64,76 @@ class _MyWidgetState extends State<CanNangSrceen> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 30.0,
                   ),
-                  Text(
-                    'kg',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Colors.yellow[700],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        Text(
+                          _sliderValue.round().toString(),
+                          style: TextStyle(
+                            fontSize: 25.0,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 1.0,
+                        ),
+                        Text(
+                          'kg',
+                          style: TextStyle(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SliderTheme(
+                    data: SliderThemeData(
+                      activeTrackColor: Colors.deepOrange,
+                      inactiveTrackColor: Colors.black,
+                      thumbColor: Colors.pink,
+                      overlayColor: Colors.indigo.withOpacity(0.18),
+                      overlayShape:
+                          RoundSliderOverlayShape(overlayRadius: 40.0),
+                      activeTickMarkColor: Colors.blue,
+                      inactiveTickMarkColor: Colors.white,
+                      trackHeight: 11.0,
+                      valueIndicatorColor: Colors.red,
+                      valueIndicatorTextStyle: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    child: Slider(
+                      min: 40.0,
+                      max: 150.0,
+                      divisions: 32,
+                      value: _sliderValue,
+                      label: _sliderValue.toString(),
+                      activeColor: Colors.yellow[700],
+                      inactiveColor: Colors.black,
+                      onChanged: (double val) {
+                        setState(() {
+                          _sliderValue = val;
+                        });
+                      },
                     ),
                   ),
                 ],
               ),
             ),
-            SliderTheme(
-              data: SliderThemeData(
-                activeTrackColor: Colors.deepOrange,
-                inactiveTrackColor: Colors.black,
-                thumbColor: Colors.pink,
-                overlayColor: Colors.indigo.withOpacity(0.18),
-                overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
-                activeTickMarkColor: Colors.blue,
-                inactiveTickMarkColor: Colors.white,
-                trackHeight: 11.0,
-                valueIndicatorColor: Colors.red,
-                valueIndicatorTextStyle: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              child: Slider(
-                min: 40.0,
-                max: 220.0,
-                divisions: 32,
-                value: _sliderValue,
-                label: _sliderValue.toString(),
-                activeColor: Colors.deepOrange,
-                inactiveColor: Colors.black,
-                onChanged: (double val) {
-                  setState(() {
-                    _sliderValue = val;
-                  });
-                },
-              ),
-            ),
             SizedBox(
-              height: 50,
+              height: 200.0,
             ),
             SizedBox(
               width: 350,
@@ -138,7 +164,9 @@ class _MyWidgetState extends State<CanNangSrceen> {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(ChieuCaoSrceen.routeName);
+                    },
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                           horizontal: 10.0, vertical: 10.0),

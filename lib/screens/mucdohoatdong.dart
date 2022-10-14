@@ -10,6 +10,9 @@ class MucDoHoatDongSrceen extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MucDoHoatDongSrceen> {
+  var _isChangeSoCap = false;
+  var _isChangeTrungBinh = false;
+  var _isChangeNangCao = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,77 +52,214 @@ class _MyWidgetState extends State<MucDoHoatDongSrceen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Sơ Cấp',
-                    style: TextStyle(color: Colors.black),
+                SizedBox(
+                  width: 300,
+                  height: 60,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      side: BorderSide(
+                        color:
+                            _isChangeSoCap ? Colors.grey : Colors.yellowAccent,
+                        width: 3.0,
+                      ),
+                      backgroundColor:
+                          _isChangeSoCap ? Colors.yellow : Colors.white,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isChangeSoCap = !_isChangeSoCap;
+                        if (_isChangeSoCap == true) {
+                          _isChangeTrungBinh = false;
+                          _isChangeNangCao = false;
+                        }
+                      });
+                    },
+                    child: Text(
+                      'Sơ Cấp',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'OpenSans',
+                        letterSpacing: 0.5,
+                      ),
+                    ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Trung Bình',
-                    style: TextStyle(color: Colors.black),
+                SizedBox(
+                  height: 50,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 60,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      side: BorderSide(
+                        color: _isChangeTrungBinh
+                            ? Colors.grey
+                            : Colors.yellowAccent,
+                        width: 3.0,
+                      ),
+                      backgroundColor:
+                          _isChangeTrungBinh ? Colors.yellow : Colors.white,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isChangeTrungBinh = !_isChangeTrungBinh;
+                        if (_isChangeTrungBinh == true) {
+                          _isChangeSoCap = false;
+                          _isChangeNangCao = false;
+                        } else if (_isChangeTrungBinh == false) {
+                          if (_isChangeSoCap == true) {
+                            _isChangeTrungBinh = false;
+                          } else {
+                            _isChangeTrungBinh = true;
+                          }
+                        }
+                      });
+                    },
+                    child: Text(
+                      'Trung bình',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'OpenSans',
+                        letterSpacing: 0.5,
+                      ),
+                    ),
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Nâng Cao',
-                    style: TextStyle(color: Colors.black),
+                SizedBox(
+                  height: 50,
+                ),
+                SizedBox(
+                  width: 300,
+                  height: 60,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 10.0, vertical: 10.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      side: BorderSide(
+                        color: _isChangeNangCao
+                            ? Colors.grey
+                            : Colors.yellowAccent,
+                        width: 3.0,
+                      ),
+                      backgroundColor:
+                          _isChangeNangCao ? Colors.yellow : Colors.white,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _isChangeNangCao = !_isChangeNangCao;
+                        if (_isChangeNangCao == true) {
+                          _isChangeTrungBinh = false;
+                          _isChangeSoCap = false;
+                        } else if (_isChangeNangCao == false) {
+                          if (_isChangeSoCap == true) {
+                            _isChangeTrungBinh = false;
+                          } else {
+                            _isChangeTrungBinh = true;
+                          }
+                        }
+                      });
+                    },
+                    child: Text(
+                      'Nâng Cao',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'OpenSans',
+                        letterSpacing: 0.5,
+                      ),
+                    ),
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 15,
+                bottom: 30,
+                right: 15,
+                top: 50,
+              ),
+              child: Text(
+                'Nhấn vào BỎ QUA để bỏ qua những câu hỏi sau đó. Đừng lo lắng bạn luôn có thể cập nhật và thay đổi nó sau trong phần Cài Đặt.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+            SizedBox(
+              height: 30,
             ),
             SizedBox(
               width: 350,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.white,
+                        side: BorderSide(
+                          color: Colors.yellowAccent,
+                          width: 2.0,
+                        ),
                       ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      'Quay lại',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Quay lại',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(AgeScreen.routeName);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AgeScreen.routeName);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.yellow,
                       ),
-                      backgroundColor: Colors.yellow,
-                    ),
-                    child: Text(
-                      'Tiep Theo',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Tiep Theo',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
