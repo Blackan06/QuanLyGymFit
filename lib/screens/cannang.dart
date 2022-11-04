@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gym_fit/screens/chieucao.dart';
 import 'package:weight_slider/weight_slider.dart';
+import 'dart:math';
+
+import '../utils/colors_util.dart';
 
 class CanNangSrceen extends StatefulWidget {
   const CanNangSrceen({super.key});
@@ -12,10 +15,25 @@ class CanNangSrceen extends StatefulWidget {
 
 class _MyWidgetState extends State<CanNangSrceen> {
   double _sliderValue = 70.0;
+  double roundDouble(double value, int places) {
+    num mod = pow(_sliderValue, places);
+    return ((value * mod).round().toDouble() / mod);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: Column(
           children: <Widget>[
             Container(
@@ -79,7 +97,7 @@ class _MyWidgetState extends State<CanNangSrceen> {
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Text(
-                          _sliderValue.round().toString(),
+                          _sliderValue.toStringAsFixed(1),
                           style: TextStyle(
                             fontSize: 25.0,
                             color: Colors.black,
@@ -121,7 +139,7 @@ class _MyWidgetState extends State<CanNangSrceen> {
                       value: _sliderValue,
                       label: _sliderValue.toString(),
                       activeColor: Colors.yellow[700],
-                      inactiveColor: Colors.black,
+                      inactiveColor: Colors.yellow,
                       onChanged: (double val) {
                         setState(() {
                           _sliderValue = val;
@@ -133,56 +151,68 @@ class _MyWidgetState extends State<CanNangSrceen> {
               ),
             ),
             SizedBox(
-              height: 200.0,
+              height: 240.0,
             ),
             SizedBox(
               width: 350,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.white,
+                        side: BorderSide(
+                          color: Colors.yellowAccent,
+                          width: 2.0,
+                        ),
                       ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      'Quay lại',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Quay lại',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(ChieuCaoSrceen.routeName);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(ChieuCaoSrceen.routeName);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.yellow,
                       ),
-                      backgroundColor: Colors.yellow,
-                    ),
-                    child: Text(
-                      'Tiep Theo',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Tiep Theo',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),

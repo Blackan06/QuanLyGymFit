@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_fit/screens/age.dart';
 
+import '../utils/colors_util.dart';
+
 class MucDoHoatDongSrceen extends StatefulWidget {
   const MucDoHoatDongSrceen({super.key});
   static const routeName = '/mucdo';
@@ -17,6 +19,16 @@ class _MyWidgetState extends State<MucDoHoatDongSrceen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: Column(
           children: <Widget>[
             Container(

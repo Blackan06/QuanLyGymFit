@@ -1,44 +1,11 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:gym_fit/screens/login.dart';
-import '../screens/loading.dart';
+import 'package:gym_fit/screens/onboarding2.dart';
+
 import '../utils/colors_util.dart';
-import '../widgets/OnbordingButton_Widger.dart';
-import '../widgets/ImageOnbordingButton.dart';
 
-class OnBoarding1Screen extends StatefulWidget {
+class OnBoarding1Screen extends StatelessWidget {
   static const routeName = '/onboarding1';
-
-  @override
-  State<OnBoarding1Screen> createState() => _OnBoarding1ScreenState();
-}
-
-class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
-  final _imageText = const [
-    {
-      'imageText': "assets/images/Login.png",
-    },
-    {
-      'imageText': "assets/images/MuayThai.jpg",
-    },
-    {
-      'imageText': "assets/images/MuayThai1.jpg",
-    },
-    {
-      'imageText': "assets/images/MuayThai1.jpg",
-    },
-  ];
-  bool _isPassed = false;
-  int imageText = 0;
-  void _chooseButton() {
-    setState(() {
-      _isPassed = true;
-      imageText += 1;
-    });
-    if (imageText == 3) {
-      Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-      _isPassed = false;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +14,8 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              hexStringToColor("FFFFFF"),
-              hexStringToColor("BBC6C8"),
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -60,24 +27,59 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
               padding: const EdgeInsets.only(
                   left: 15, bottom: 10, right: 15, top: 50),
             ),
-            imageText < _imageText.length
-                ? ImageOnboarding(
-                    nextImage: _chooseButton,
-                    imageOnbording: _imageText,
-                    questionIndex: imageText,
-                  )
-                : ImageOnboarding(
-                    nextImage: _chooseButton,
-                    imageOnbording: _imageText,
-                    questionIndex: imageText,
-                  ),
+            CircleAvatar(
+              radius: 200,
+              backgroundImage:
+                  AssetImage('assets/images/onboarding/onboarding.png'),
+            ),
             SizedBox(
-              height: 190,
+              height: 40.0,
+            ),
+            Center(
+                child: Text(
+              'Chào mừng đến với',
+              style: TextStyle(
+                fontSize: 28,
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
+              ),
+            )),
+            Center(
+              child: Text(
+                'FreeFit',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  color: Colors.yellow[700],
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 30.0,
+            ),
+            Center(
+              child: DotsIndicator(
+                dotsCount: 3,
+                position: 0,
+                decorator: DotsDecorator(
+                  spacing: const EdgeInsets.all(10.0),
+                  activeColor: Colors.yellow,
+                  size: const Size.square(20.0),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 10.0,
             ),
             SizedBox(
               width: 350,
               child: ElevatedButton(
-                onPressed: _chooseButton,
+                onPressed: () {
+                  Navigator.of(context).pushNamed(OnBoarding2Screen.routeName);
+                },
                 style: ElevatedButton.styleFrom(
                   padding:
                       EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),

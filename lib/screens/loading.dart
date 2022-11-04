@@ -3,14 +3,24 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../screens/onboarding1.dart';
 import '../utils/colors_util.dart';
 
-class LoadingScreen extends StatelessWidget {
-  final ButtonStyle style = ElevatedButton.styleFrom(
-    textStyle: const TextStyle(
-        color: Colors.white, fontSize: 25, fontStyle: FontStyle.normal),
-    shape: BeveledRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(10))),
-    shadowColor: Colors.lightBlue,
-  );
+class LoadingScreen extends StatefulWidget {
+  @override
+  State<LoadingScreen> createState() => _LoadingScreenState();
+}
+
+class _LoadingScreenState extends State<LoadingScreen> {
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _navigatetohome();
+  }
+
+  _navigatetohome() async {
+    await Future.delayed(Duration(seconds: 3), () {});
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => OnBoarding1Screen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +28,8 @@ class LoadingScreen extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              hexStringToColor("FFFFFF"),
-              hexStringToColor("BBC6C8"),
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -45,34 +55,14 @@ class LoadingScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 180,
+              height: 50,
             ),
-            SizedBox(
-              width: 350,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(OnBoarding1Screen.routeName);
-                },
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  backgroundColor: Colors.yellow,
-                ),
-                child: Text(
-                  'Bat Dau',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'OpenSans',
-                    letterSpacing: 0.5,
-                    fontSize: 24,
-                  ),
-                ),
+            Center(
+              child: SpinKitFadingCircle(
+                color: Colors.yellow,
+                size: 100,
               ),
-            ),
+            )
           ],
         ),
       ),

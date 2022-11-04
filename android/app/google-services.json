@@ -1,50 +1,35 @@
 {
   "project_info": {
-    "project_number": "627945256376",
-    "firebase_url": "https://flutter-gymfit-default-rtdb.firebaseio.com",
-    "project_id": "flutter-gymfit",
-    "storage_bucket": "flutter-gymfit.appspot.com"
+    "project_number": "340950676474",
+    "firebase_url": "https://shop-65063-default-rtdb.firebaseio.com",
+    "project_id": "shop-65063",
+    "storage_bucket": "shop-65063.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:627945256376:android:92280d2e5f0c22e3100b4d",
+        "mobilesdk_app_id": "1:340950676474:android:2c4eaf12aa844a64b9aa43",
         "android_client_info": {
           "package_name": "com.example.gym_fit"
         }
       },
       "oauth_client": [
         {
-          "client_id": "627945256376-53sbjtsrs9l828uaa1jpiaeasnfe2rtc.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.gym_fit",
-            "certificate_hash": "874613f637559f7ec46a0273e962f9ab48da6f9c"
-          }
-        },
-        {
-          "client_id": "627945256376-cqou55gju4cu66juq42i2i0gk62lpog2.apps.googleusercontent.com",
+          "client_id": "340950676474-nc3868jbl32ucljsaloajnk7talgenp4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBKWrT1f1UQuVovsPuqX4Wc1Gix34YNssM"
+          "current_key": "AIzaSyDzoKmGH9vaurcnZPwx65F1fO2Q5_jkYJw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "627945256376-cqou55gju4cu66juq42i2i0gk62lpog2.apps.googleusercontent.com",
+              "client_id": "340950676474-nc3868jbl32ucljsaloajnk7talgenp4.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "627945256376-1s5567ejgu93nbr2ben0n1ajcug7b873.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "net.codex.gymfit"
-              }
             }
           ]
         }

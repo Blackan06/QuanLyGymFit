@@ -3,6 +3,8 @@ import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:gym_fit/screens/cannang.dart';
 import 'package:numberpicker/numberpicker.dart';
 
+import '../utils/colors_util.dart';
+
 class AgeScreen extends StatefulWidget {
   const AgeScreen({super.key});
   static const routeName = '/age';
@@ -17,6 +19,16 @@ class _MyWidgetState extends State<AgeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: Column(
           children: <Widget>[
             Container(

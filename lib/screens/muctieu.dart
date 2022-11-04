@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/mucdohoatdong.dart';
 import '../providers/checktitlemuctieu.dart';
+import '../utils/colors_util.dart';
 
 class MuctieuScreen extends StatefulWidget {
   static const routeName = '/muctieu';
@@ -17,13 +18,9 @@ class _MyWidgetState extends State<MuctieuScreen> {
     CheckTitleMuctieu(title: 'Xây dựng cơ bắp'),
     CheckTitleMuctieu(title: 'Cải thiện độ bền')
   ];
-  bool _isChecked = false;
   void onAllClicked(CheckTitleMuctieu chkMT) {
     setState(() {
       chkMT.value = !chkMT.value;
-      _isChecked = !_isChecked;
-      print(chkMT.toString());
-      print(_isChecked.toString());
     });
   }
 
@@ -31,6 +28,16 @@ class _MyWidgetState extends State<MuctieuScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: Column(
           children: <Widget>[
             Container(
@@ -70,35 +77,67 @@ class _MyWidgetState extends State<MuctieuScreen> {
                 children: <Widget>[
                   ...checkBoxList
                       .map(
-                        (item) => Card(
-                          shape: RoundedRectangleBorder(
-                            side: BorderSide(color: Colors.yellow, width: 3.0),
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          margin: EdgeInsets.only(bottom: 20),
-                          color: Colors.white,
-                          child: CheckboxListTile(
-                            activeColor: Colors.black,
-                            checkColor: Colors.yellow,
-                            title: Text(
-                              item.title,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
+                        (item) => item.value
+                            ? Card(
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      color: Colors.grey, width: 3.0),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                margin: EdgeInsets.only(bottom: 20),
+                                color: Colors.yellow,
+                                child: CheckboxListTile(
+                                  activeColor: Colors.black,
+                                  checkColor: Colors.yellow,
+                                  title: Text(
+                                    item.title,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  side: BorderSide(
+                                    color: Colors.yellowAccent,
+                                    width: 2.0,
+                                  ),
+                                  value: item.value,
+                                  onChanged: (value) => onAllClicked(item),
+                                ),
+                              )
+                            : Card(
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                      color: Colors.yellow, width: 3.0),
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                margin: EdgeInsets.only(bottom: 20),
+                                color: Colors.white,
+                                child: CheckboxListTile(
+                                  activeColor: Colors.black,
+                                  checkColor: Colors.yellow,
+                                  title: Text(
+                                    item.title,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  checkboxShape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                  side: BorderSide(
+                                    color: Colors.yellowAccent,
+                                    width: 2.0,
+                                  ),
+                                  value: item.value,
+                                  onChanged: (value) => onAllClicked(item),
+                                ),
                               ),
-                            ),
-                            checkboxShape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            side: BorderSide(
-                              color: Colors.yellowAccent,
-                              width: 2.0,
-                            ),
-                            value: item.value,
-                            onChanged: (value) => onAllClicked(item),
-                          ),
-                        ),
                       )
                       .toList(),
                 ],

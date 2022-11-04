@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gym_fit/screens/thongtincanhan.dart';
 import 'package:numberpicker/numberpicker.dart';
+
+import '../utils/colors_util.dart';
 
 class ChieuCaoSrceen extends StatefulWidget {
   const ChieuCaoSrceen({super.key});
@@ -16,6 +19,16 @@ class _MyWidgetState extends State<ChieuCaoSrceen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              hexStringToColor('41413f'),
+              hexStringToColor('777777'),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: Column(
           children: <Widget>[
             Container(
@@ -55,22 +68,22 @@ class _MyWidgetState extends State<ChieuCaoSrceen> {
                 children: <Widget>[
                   SizedBox(
                     height: 350,
-                    width: double.infinity,
                     child: NumberPicker(
                       maxValue: 200,
                       minValue: 150,
-                      itemCount: 7,
+                      itemCount: 3,
                       onChanged: (value) {
                         setState(() {
                           _currentValue = value;
                         });
                       },
+                      axis: Axis.horizontal,
                       value: _currentValue,
                       selectedTextStyle: TextStyle(
                         decoration: TextDecoration.combine([
                           TextDecoration.underline,
                         ]),
-                        fontSize: 40,
+                        fontSize: 50,
                         fontFamily: 'OpenSans',
                         letterSpacing: 0.5,
                         color: Colors.yellow[700],
@@ -81,54 +94,68 @@ class _MyWidgetState extends State<ChieuCaoSrceen> {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 120.0,
             ),
             SizedBox(
               width: 350,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      style: OutlinedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.white,
+                        side: BorderSide(
+                          color: Colors.yellowAccent,
+                          width: 2.0,
+                        ),
                       ),
-                      backgroundColor: Colors.white,
-                    ),
-                    child: Text(
-                      'Quay lại',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Quay lại',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 10.0, vertical: 10.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context)
+                            .pushNamed(UserAddDataScreen.routeName);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 10.0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        backgroundColor: Colors.yellow,
                       ),
-                      backgroundColor: Colors.yellow,
-                    ),
-                    child: Text(
-                      'Tiep Theo',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        letterSpacing: 0.5,
-                        fontSize: 24,
+                      child: Text(
+                        'Tiep Theo',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'OpenSans',
+                          letterSpacing: 0.5,
+                          fontSize: 24,
+                        ),
                       ),
                     ),
                   ),
